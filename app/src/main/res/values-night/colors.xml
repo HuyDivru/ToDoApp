@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#263238</color>
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorAccent">#a3abae</color>
+
+
+    <color name="fabRippleColor">#3fff</color>
+    <color name="priority_green">#5e7e00</color>
+    <color name="priority_yellow">#DAC721</color>
+    <color name="priority_red">#D51103</color>
+    <color name="iv_mask_new_act">#8000</color>
+    <color name="iv_mask_task_item">#A666</color>
+    <color name="color_mask_icon_task_item">#660000</color>
+
+    <color name="listTitle">#DDD</color>
+    <color name="listContent">#ABBB</color>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Main Interface">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="SHOW_WEEK_TASK"
+            android:summary="The main interface task list displays all tasks for the week"
+            android:title="Show only this week's tasks"
+            />
+        <ListPreference
+            android:defaultValue="false"
+            android:entries="@array/perfernece_show_as_list_entries"
+            android:entryValues="@array/perfernece_show_as_list_entries_values"
+            android:key="SHOW_AS_LIST"
+            android:negativeButtonText="@null"
+            android:positiveButtonText="@null"
+            android:summary="Display task list in list form"
+            android:title="Layout"
+            />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="SHOW_PRIORITY"
+            android:summary="Priority will be shown in the task card"
+            android:title="Show priority"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Backup and Restore">
+        <Preference
+            android:key="BACKUP"
+            android:summary="Backup up/export data to external storage device"
+            android:title="Backup"
+            />
+        <Preference
+            android:key="RESTORE"
+            android:summary="Restore backed up data"
+            android:title="Restore"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Night Mode">
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="AUTO_SWITCH_NIGHT_MODE"
+            android:title="Automatically switch on and off night mode"/>
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="NIGHT_MODE"
+            android:title="Night Mode"/>
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="Other">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="AUTO_NOTIFY"
+            android:title="Smart reminder to complete tasks"
+            />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="About">
+        <Preference
+            android:title="About the application"
+            >
+            <intent
+                android:targetClass="com.example.todo.views.AboutActivity"
+                android:targetPackage="com.example.todo"
+                />
+        </Preference>
+
+
+    </PreferenceCategory>
+</PreferenceScreen>
