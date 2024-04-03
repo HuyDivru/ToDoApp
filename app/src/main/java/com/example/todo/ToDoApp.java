@@ -11,7 +11,6 @@ import com.example.todo.constant.Contants;
 import com.example.todo.utils.GlideImageLoader;
 import com.example.todo.utils.ImageLoader;
 import com.squareup.leakcanary.LeakCanary;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -40,9 +39,6 @@ public class ToDoApp extends Application {
         String processName = getProcessName(Process.myPid());
 
         //set whether it is a reporting process
-        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(context);
-        strategy.setUploadProcess(processName == null || processName.equals(packageName));
-        strategy.setAppChannel("ToDoApp");
 
         File file = null;
         try {

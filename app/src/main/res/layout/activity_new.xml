@@ -52,7 +52,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:laout_scrollFlags="scroll|enterAlways"
+                app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/Theme.ToDo.AppBarOverlay"
                 />
         </com.google.android.material.appbar.CollapsingToolbarLayout>

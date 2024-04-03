@@ -21,10 +21,17 @@ public abstract class PrimaryActivity extends AppCompatActivity  implements Prim
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
         ButterKnife.bind(this);
+        initializeViews();
+        initalizeInjector();
     }
 
     @CallSuper
     protected void initializeViews(){
         setSupportActionBar(mToolbar);
+    }
+
+    @Override
+    public void initalizeInjector() {
+
     }
 }

@@ -22,7 +22,8 @@ public class TaskDetailEntity  extends RealmObject implements Serializable {
     private String icon;
 
 
-    public TaskDetailEntity() {
+    public TaskDetailEntity(int dayOfTheWeek) {
+        this.dayOfTheWeek=dayOfTheWeek;
     }
 
     public int getDayOfTheWeek() {
@@ -91,7 +92,14 @@ public class TaskDetailEntity  extends RealmObject implements Serializable {
         this.icon = newTask.getIcon();
     }
     public TaskDetailEntity cloneObj(){
-        return null;
+        TaskDetailEntity entity=new TaskDetailEntity(dayOfTheWeek);
+        entity.title=title;
+        entity.content=content;
+        entity.icon=icon;
+        entity.timeStamp=timeStamp;
+        entity.state=state;
+        entity.priority=priority;
+        return entity;
     }
     @Override
     public boolean equals(@Nullable Object obj) {
@@ -112,6 +120,15 @@ public class TaskDetailEntity  extends RealmObject implements Serializable {
     @NonNull
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+        TaskDetailEntity entity=(TaskDetailEntity)
+          super.clone();
+        entity.dayOfTheWeek=dayOfTheWeek;
+        entity.title=title;
+        entity.content=content;
+        entity.icon=icon;
+        entity.timeStamp=timeStamp;
+        entity.state=state;
+        entity.priority=priority;
+        return entity;
     }
 }

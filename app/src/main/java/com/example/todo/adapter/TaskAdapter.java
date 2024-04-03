@@ -37,7 +37,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.ta,parent,false));
+//        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.ta,parent,false));
+        return null;
     }
 
     @Override
