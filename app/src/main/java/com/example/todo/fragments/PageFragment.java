@@ -1,10 +1,13 @@
 package com.example.todo.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -14,8 +17,10 @@ import android.view.ViewGroup;
 
 import com.example.todo.R;
 import com.example.todo.adapter.TaskAdapter;
+import com.example.todo.constant.Contants;
 import com.example.todo.databinding.FragmentPageBinding;
 import com.example.todo.entities.TaskDetailEntity;
+import com.example.todo.utils.PreferceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +61,34 @@ public class PageFragment extends Fragment {
 
     private void initViews() {
         mAdapter=new TaskAdapter(getContext(),mList);
-//        boolean showPriority=PreferceUtils;
+        boolean showPriority= PreferceUtils.getInstance(getActivity()).getBooleanParam(Contants.CONFIG_KEY.SHOW_PRIORITY,true);
+        mAdapter.setShowPriority(showPriority);
+        if(mListener==null && getActivity() instanceof OnPageFragmentInteractionListener){
+            mListener=(OnPageFragmentInteractionListener) getActivity();
+        }
+        mAdapter.setListener(new TaskAdapter.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(int position, TaskDetailEntity entity) {
+                if(mListener!=null){
+                    mListener.onListTaskItemClick(position,entity);
+                }
+            }
+            @Override
+            public void onItemLongClick(int position, TaskDetailEntity entity) {
+                if(mListener!=null){
+                    mListener.onListTaskItemLongClick(position,entity);
+                }
+            }
+        });
+        mRv.setAdapter(mAdapter);
+        String s=PreferceUtils.getInstance(getActivity()).getStringParam(Contants.CONFIG_KEY.SHOW_AS_LIST,"list");
+        if(s.equals("list")){
+            mRv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        }
+        else{
+            mRv.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        }
     }
     //insert task
     public void insertTask(TaskDetailEntity task) {
@@ -78,6 +110,17 @@ public class PageFragment extends Fragment {
 
     public void clearTasks() {
         mList.clear();
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnPageFragmentInteractionListener){
+            mListener=(OnPageFragmentInteractionListener) context;
+        }
+        else {
+            Log.e("TAG","context must implement OnPageFragmentInteractionListener");
+        }
     }
 
     public interface OnPageFragmentInteractionListener {

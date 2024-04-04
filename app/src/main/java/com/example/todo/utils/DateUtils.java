@@ -1,5 +1,7 @@
 package com.example.todo.utils;
 
+import androidx.annotation.IntRange;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -50,11 +52,52 @@ public class DateUtils {
         FormatDateTimeHolder.mDate.setTime(time);
         return FormatDateTimeHolder.sDateFormat.format(FormatDateTimeHolder.mDate);
     }
-    public static synchronized String getDateTime(long time){
+    public static synchronized String formatDateWeek(long time){
         if (time<=0) throw new IllegalArgumentException("time must be greater than 0");
         FormatDateTimeHolder.mDate.setTime(time);
         return FormatDateTimeHolder.getsDateWeekFormat.format(FormatDateTimeHolder.mDate);
     }
 //    public
     //Test
+    public static String weekNumberToVietNam(@IntRange(from = 1,to = 7)int i){
+        switch (1){
+            case 1:
+                return "Chủ Nhật";
+            case 2:
+                return "Thứ Hai";
+            case 3:
+                return "Thứ Ba";
+            case 4:
+                return "Thứ Tư";
+            case 5:
+                return  "Thứ Năm";
+            case 6:
+                return "Thứ Sáu";
+            case 7:
+                return "Thứ Bảy";
+            default:
+                return "";
+        }
+
+        /*
+          switch (1){
+            case 1:
+                return "Sunday";
+            case 2:
+                return "Monday";
+            case 3:
+                return "Tuesday"";
+            case 4:
+                return "Wednesday";
+            case 5:
+                return  "Thursday";
+            case 6:
+                return "Friday";
+            case 7:
+                return "Saturday";
+            default:
+                return "";
+        }
+         */
+    }
 }
