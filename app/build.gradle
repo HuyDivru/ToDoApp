@@ -1,7 +1,10 @@
     plugins {
         id 'com.android.application'
+        id 'org.jetbrains.kotlin.android'
+        id 'org.jetbrains.kotlin.kapt'
     }
 
+    apply plugin: "realm-android"
     android {
         namespace 'com.example.todo'
         compileSdk 33
@@ -28,6 +31,9 @@
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
         }
+        realm {
+            syncEnabled = true
+        }
     }
 
     dependencies {
@@ -40,7 +46,7 @@
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
         //
         implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
-        implementation 'io.reactivex.rxjava3:rxjava:3.0.13'
+        implementation 'io.reactivex.rxjava3:rxjava:3.1.5'
         //
         implementation 'com.jakewharton:butterknife:10.2.3'
         annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
@@ -68,7 +74,5 @@
 
         //
        // implementation 'com.tencent.bugly:crashreport_upgrade:1.4.2'
-        //
-        implementation 'io.realm:realm-android-library:10.18.0'
-
+        implementation 'io.realm:realm-gradle-plugin:10.10.1'
     }

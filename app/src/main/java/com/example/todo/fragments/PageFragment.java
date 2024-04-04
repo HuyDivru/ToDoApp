@@ -44,6 +44,10 @@ public class PageFragment extends Fragment {
         Log.d("Pagefragment","constructor");
     }
 
+    public TaskAdapter getAdapter() {
+        return mAdapter;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

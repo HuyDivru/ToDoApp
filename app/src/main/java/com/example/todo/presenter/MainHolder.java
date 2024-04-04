@@ -30,7 +30,8 @@ public interface MainHolder {
         void onActivityResult(int requestCode, int resultCode, Intent data);
         void onListTaskItemLongClick(int position, TaskDetailEntity entity);
         void onListTaskItemClick(int position, TaskDetailEntity entity);
-        void dialogActionItemClick(int position, TaskDetailEntity entity);
+        void dialogActionFlagTask(int position, TaskDetailEntity entity);
+        void dialogActionEditTask(int position, TaskDetailEntity entity);
         void dialogActionDeleteTask(int position,TaskDetailEntity entity);
         void dialogActionPutOffTask(int position,TaskDetailEntity entity);
     }

@@ -21,7 +21,9 @@ public class TaskDetailEntity  extends RealmObject implements Serializable {
     private String content;
     private String icon;
 
+    public TaskDetailEntity(){
 
+    }
     public TaskDetailEntity(int dayOfTheWeek) {
         this.dayOfTheWeek=dayOfTheWeek;
     }
@@ -130,5 +132,18 @@ public class TaskDetailEntity  extends RealmObject implements Serializable {
         entity.state=state;
         entity.priority=priority;
         return entity;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskDetailEntity{" +
+                "dayOfTheWeek=" + dayOfTheWeek +
+                ", timeStamp=" + timeStamp +
+                ", state=" + state +
+                ", priority=" + priority +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", icon='" + icon + '\'' +
+                '}';
     }
 }

@@ -13,6 +13,7 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 
+
 /**
  * create by honhathuy on 2024/03/29
  */
@@ -48,8 +49,8 @@ public class DataDao {
         function findAllTask
      */
     public RealmResults<TaskDetailEntity> findAllTask(){
-        return Realm.getDefaultInstance().where(TaskDetailEntity.class)
-                .sort("timeStamp").findAll();
+            return Realm.getDefaultInstance().where(TaskDetailEntity.class)
+                .findAll().sort("timeStamp");
     }
     /*
     function findAllTask(int dayOfWeek)
@@ -74,7 +75,7 @@ public class DataDao {
                 .findAll().sort("timeStamp");
     }
     /*
-    function finAallTaskofThisWeekfromMonday
+    function findAllTaskofThisWeekfromMonday
      */
     public RealmResults<TaskDetailEntity> findAllTaskOfThisWeekFromMonday(){
         long sundayTimeMillisOfWeek= DateUtils.getFirstModayTimeMillisOfWeek();

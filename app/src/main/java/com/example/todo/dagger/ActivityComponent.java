@@ -9,7 +9,7 @@ import com.example.todo.views.MainActivity;
 
 import dagger.Component;
 
-@Component(modules = {ActivityModule.class,DataModule.class})
+@Component(modules = {ActivityModule.class,DataModule.class,EntityModule.class})
 public interface ActivityComponent {
 
 

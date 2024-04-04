@@ -27,42 +27,30 @@ public class ToDoApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        // Initialize LeakCanary to detect memory leaks
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return;
         }
 
-        Context context = getApplicationContext();
-        //get the current package name
-        String packageName = context.getPackageName();
-        //get the current process name
-        String processName = getProcessName(Process.myPid());
-
-        //set whether it is a reporting process
-
-        File file = null;
-        try {
-            file = new File(Contants.DATABASE_FILE_PATH_FOLDER);
-            file.mkdirs();
-        } catch (Exception e) {
-
-        }
-
+        // Initialize Realm
         Realm.init(this);
-        RealmConfiguration.Builder builder = new RealmConfiguration.Builder().name(Contants.DATABASE_FILE_PATH_FILE_NAME);
-
         try {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N && file != null) {
-                builder.directory(file);
-            } else {
-                builder.directory(new File(Contants.ExternalStorageDirectory + Contants.DATABASE_FILE_PATH_FOLDER));
-            }
-        } catch (Exception e) {
-            Toast.makeText(context, "In order to get a better user experience , please grant relevan permissions to this application in the settings", Toast.LENGTH_SHORT).show();
-        }
+            // Define the Realm configuration
+            RealmConfiguration config = new RealmConfiguration.Builder()
+                    .name(Contants.DATABASE_FILE_PATH_FILE_NAME)
+                    // Uncomment and complete if migrating the Realm schema
+                    // .migration(new MyRealmMigration())
+                    .build();
 
-        Realm.setDefaultConfiguration(builder.build());
-        ImageLoader.init(GlideImageLoader.create(this));
+            // Set the default Realm configuration
+            Realm.setDefaultConfiguration(config);
+
+            // Initialize your image loader
+            ImageLoader.init(GlideImageLoader.create(this));
+
+        } catch (Exception e) {
+            // Proper exception handling here, consider notifying the user or logging the issue
+        }
     }
 
     /*
